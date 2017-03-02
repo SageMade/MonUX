@@ -64,12 +64,12 @@ namespace MonUX.Interface
             TextColor = Color.Black;
             BackgroundColor = Color.LightGray;
         }
-
+        
         protected void __CalculateTextPos()
         {
             myTextPos = Vector2.Zero;
-            myTextPos.X = myAlignment.HasFlag(Alignment.Center) ? Bounds.Center.X - (myTextSize.X / 2.0f) : myAlignment.HasFlag(Alignment.Right) ? Bounds.Right - myTextSize.X : Bounds.Left;
-            myTextPos.Y = myAlignment.HasFlag(Alignment.Middle) ? Bounds.Center.Y - (myTextSize.Y / 2.0f) : myAlignment.HasFlag(Alignment.Bottom) ? Bounds.Bottom - myTextSize.Y : Bounds.Top;
+            myTextPos.X = (int)Math.Round(myAlignment.HasFlag(Alignment.Center) ? Bounds.Center.X - (myTextSize.X / 2.0f) : myAlignment.HasFlag(Alignment.Right) ? Bounds.Right - myTextSize.X : Bounds.Left);
+            myTextPos.Y = (int)Math.Round(myAlignment.HasFlag(Alignment.Middle) ? Bounds.Center.Y - (myTextSize.Y / 2.0f) : myAlignment.HasFlag(Alignment.Bottom) ? Bounds.Bottom - myTextSize.Y : Bounds.Top);
         }
 
         protected override void OnBoundsChanged(Rectangle bounds)

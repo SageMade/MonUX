@@ -45,6 +45,8 @@
     <Compile Include="Input\Enums.cs" />
     <Compile Include="Input\KeyboardManager.cs" />
     <Compile Include="Input\DeltaMouseState.cs" />
+    <Compile Include="Input\KeyPressEvent.cs" />
+    <Compile Include="Input\KeySequence.cs" />
     <Compile Include="Input\MouseManager.cs" />
     <Compile Include="Interface\Alignment.cs" />
     <Compile Include="Interface\BorderStyle.cs" />
