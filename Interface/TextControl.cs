@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using static MonUX.Utility;
+
 namespace MonUX.Interface
 {
     public abstract class TextControl : Control

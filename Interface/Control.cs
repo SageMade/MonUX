@@ -9,6 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using static MonUX.Utility;
+
 namespace MonUX.Interface
 {
     /// <summary>
@@ -182,7 +184,6 @@ namespace MonUX.Interface
         protected virtual void __InitRender()
         {
             Renderer.FillBounds(Bounds, BackgroundColor);
-            Renderer.DrawBounds(Bounds, BorderColor, BorderStyle);
             Renderer.SetClip(Bounds);
         }
 
@@ -191,7 +192,7 @@ namespace MonUX.Interface
         /// </summary>
         protected virtual void __EndRender()
         {
-
+            Renderer.DrawBounds(Bounds, BorderColor, BorderStyle);
         }
     }
 }

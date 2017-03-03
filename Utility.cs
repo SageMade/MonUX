@@ -11,19 +11,30 @@ namespace MonUX
 {
     public static class Utility
     {
+        private static IRenderer myRenderer;
         private static MonuxServiceProvider myServiceProvider;
 
         internal static MonuxServiceProvider MonuxServices
         {
             get { return myServiceProvider; }
         }
+        public static IRenderer Renderer
+        {
+            get { return myRenderer; }
+        }
 
         public static void InitMonUX(Game game)
         {
+            InitMonUX(game, new MonoRenderer());
+        }
+
+        public static void InitMonUX(Game game, IRenderer renderer)
+        {
             myServiceProvider = new MonuxServiceProvider(game);
+            myRenderer = renderer;
 
             EmbeddedContent.Init();
-            Renderer.Init();
+            myRenderer.Init();
             MouseManager.Init();
             KeyboardManager.Init();
 

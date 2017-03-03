@@ -30,14 +30,23 @@ namespace MonUX.Input
         private static Dictionary<Keys, KeyListener> myWatches;
 
         private static List<KeySequence> myKeySequences;
+
+        public static event EventHandler<TextInputEventArgs> TextInput;
         
-        public static void Init()
+        internal static void Init()
         {
             myPrevState = Keyboard.GetState();
             myCurrentState = Keyboard.GetState();
 
             myWatches = new Dictionary<Keys, KeyListener>();
             myKeySequences = new List<KeySequence>();
+
+            MonuxServices.Game.Window.TextInput += __GameWindowTextInput;
+        }
+
+        private static void __GameWindowTextInput(object sender, TextInputEventArgs e)
+        {
+            TextInput?.Invoke(sender, e);
         }
 
         public static void AddSequence(KeySequence sequence)
