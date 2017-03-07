@@ -54,13 +54,13 @@ namespace MonUX.Render
                 if (inner)
                 {
                     __AddLine(bounds.Left - 1,  bounds.Top,    bounds.Right, bounds.Top,    color);
-                    __AddLine(bounds.Left,  bounds.Bottom, bounds.Right, bounds.Bottom, color);
-                    __AddLine(bounds.Left,  bounds.Top,    bounds.Left,  bounds.Bottom, color);
-                    __AddLine(bounds.Right, bounds.Top,    bounds.Right, bounds.Bottom, color);
+                    __AddLine(bounds.Left,      bounds.Bottom, bounds.Right, bounds.Bottom, color);
+                    __AddLine(bounds.Left,      bounds.Top,    bounds.Left,  bounds.Bottom, color);
+                    __AddLine(bounds.Right,     bounds.Top,    bounds.Right, bounds.Bottom, color);
                 }
                 else
                 {
-                    __AddLine(bounds.Left  - 1, bounds.Top    - 1, bounds.Right + 1, bounds.Top    - 1, color);
+                    __AddLine(bounds.Left  - 2, bounds.Top    - 1, bounds.Right + 1, bounds.Top    - 1, color);
                     __AddLine(bounds.Left  - 1, bounds.Bottom + 1, bounds.Right + 1, bounds.Bottom + 1, color);
                     __AddLine(bounds.Left  - 1, bounds.Top    - 1, bounds.Left  - 1, bounds.Bottom + 1, color);
                     __AddLine(bounds.Right + 1, bounds.Top    - 1, bounds.Right + 1, bounds.Bottom + 1, color);
@@ -306,10 +306,10 @@ namespace MonUX.Render
 
         public void End()
         {
-            __FlushAll();
+            Flush();
         }
 
-        private void __FlushAll()
+        public void Flush()
         {
             __FlushTris();
             __FlushTexTris();

@@ -7,11 +7,18 @@ namespace MonUX.Render
     public interface IRenderer
     {
         void Init();
+        
+        void PushViewport(Rectangle bounds);
 
-        void SetViewport(Rectangle bounds);
-        void UnsetViewport();
+        Rectangle PopViewport();
 
-        void SetClip(Rectangle bounds);
+        Rectangle PeekViewport();
+
+        void PushClip(Rectangle bounds);
+
+        Rectangle PopClip();
+
+        Rectangle PeekClip();
 
         void FillBounds(Rectangle bounds, Color color);
 
@@ -22,11 +29,19 @@ namespace MonUX.Render
         void DrawRoundedRect(Rectangle rectangle, Color color, float cornerRadius, bool inner, float thickness = 1, int numSamples = 4);
 
         void DrawText(SpriteFont font, string text, Vector2 position, Color color);
-
-        void UnsetClip();
+        
 
         void StartFrame();
-
         void EndFrame();
+
+        void Flush();
+
+        void PushOffset(Vector2 offset);
+
+        void PushOffset(float x, float y);
+
+        Vector2 PopOffset();
+
+        Vector2 PeekOfset();
     }
 }

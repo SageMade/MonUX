@@ -13,7 +13,7 @@ namespace MonUX.Interface
         public Label(string text, Vector2 padding) : base()
         {
             Text = text;
-            BackgroundColor = Color.LightGray;
+            BackgroundColor = Color.Transparent;
             TextColor = Color.Black;
             Vector2 size = Font?.MeasureString(text) ?? Vector2.Zero;
             size += padding;

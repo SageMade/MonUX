@@ -56,7 +56,9 @@
     <Compile Include="Interface\Control.cs" />
     <Compile Include="Interface\Label.cs" />
     <Compile Include="Interface\Panel.cs" />
+    <Compile Include="Interface\ScrollablePanel.cs" />
     <Compile Include="Interface\TextControl.cs" />
+    <Compile Include="StringTools.cs" />
     <Compile Include="Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="EmbeddedContent.cs" />

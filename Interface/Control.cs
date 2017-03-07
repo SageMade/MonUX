@@ -184,7 +184,10 @@ namespace MonUX.Interface
         protected virtual void __InitRender()
         {
             Renderer.FillBounds(Bounds, BackgroundColor);
-            Renderer.SetClip(Bounds);
+            Renderer.Flush();
+
+            Renderer.PushViewport(Bounds);
+            Renderer.PushClip(new Rectangle(0, 0, Bounds.Width, Bounds.Height));
         }
 
         /// <summary>
@@ -192,7 +195,11 @@ namespace MonUX.Interface
         /// </summary>
         protected virtual void __EndRender()
         {
+            Renderer.PopClip();
+            Renderer.PopViewport();
+
             Renderer.DrawBounds(Bounds, BorderColor, BorderStyle);
+            Renderer.Flush();
         }
     }
 }

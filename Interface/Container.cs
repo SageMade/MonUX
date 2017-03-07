@@ -41,12 +41,10 @@ namespace MonUX.Interface
         protected override void __InitRender()
         {
             base.__InitRender();
-            Renderer.SetViewport(Bounds);
         }
 
         protected override void __EndRender()
         {
-            Renderer.UnsetViewport();
             base.__EndRender();
         }
     }
