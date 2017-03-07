@@ -1,6 +1,10 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MonUX.Input;
+using MonUX.Interface;
+
+using static MonUX.Utility;
 
 namespace Testing
 {
@@ -11,6 +15,8 @@ namespace Testing
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+
+        Container myContainer;
 
         public Game1()
         {
@@ -29,6 +35,8 @@ namespace Testing
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            IsMouseVisible = true;
         }
 
         /// <summary>
@@ -40,7 +48,20 @@ namespace Testing
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            InitMonUX(this);
+
             // TODO: use this.Content to load your game content here
+            myContainer = new ScrollablePanel(10, 10, 120, 240) { ScrollStyle = ScrollStyle.Square };
+            myContainer.BorderColor = Color.Black;
+            myContainer.BorderStyle = BorderStyle.Inner | BorderStyle.Visisble;
+
+            Label test1 = new Label("Hello world!", new Vector2(5, 5));
+            test1.Location = new Vector2(10, 10);
+            myContainer.Add(test1);
+
+            Label test2 = new Label("Hello world 2!", new Vector2(5, 5));
+            test2.Location = new Vector2(40, 240);
+            myContainer.Add(test2);
         }
 
         /// <summary>
@@ -63,6 +84,7 @@ namespace Testing
                 Exit();
 
             // TODO: Add your update logic here
+            myContainer.HandleMouse(MouseManager.DeltaState);
 
             base.Update(gameTime);
         }
@@ -76,6 +98,12 @@ namespace Testing
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            Renderer.StartFrame();
+
+            myContainer?.Render();
+            
+
+            Renderer.EndFrame();
 
             base.Draw(gameTime);
         }
